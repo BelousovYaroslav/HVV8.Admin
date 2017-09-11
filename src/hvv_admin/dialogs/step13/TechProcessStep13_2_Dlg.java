@@ -81,7 +81,7 @@ public class TechProcessStep13_2_Dlg extends javax.swing.JDialog {
         getContentPane().add(btnNext);
         btnNext.setBounds(540, 220, 90, 40);
 
-        jLabel1.setText("При помощи течеискателя, проверьте герметичность установленных приборов.");
+        jLabel1.setText("При помощи течеискателя, проверьте герметичность установленных заглушек.");
         jLabel1.setToolTipText("");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(10, 10, 620, 30);
