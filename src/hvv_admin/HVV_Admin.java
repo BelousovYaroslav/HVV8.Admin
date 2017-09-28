@@ -8,7 +8,7 @@ package hvv_admin;
 
 import HVV_Communication.client.HVV_Comm_client;
 import hvv_admin.comm.executor.from.HVV_Communication_E2A;
-import hvv_admin.comm.poller.GetExecutor;
+import hvv_admin.comm.poller.GetParameterValueFromPollerExecutor;
 import hvv_admin.dialogs.HVV_Admin_MainFrame;
 import hvv_admin.dialogs.step02.TechProcessStep02_1_Dlg1;
 import hvv_admin.dialogs.step02.TechProcessStep02_3_Dlg;
@@ -1259,7 +1259,7 @@ public class HVV_Admin {
     
     public double GetFromPoller( String strParam) {
         double dblResult = Double.NaN;
-        GetExecutor executor = new GetExecutor( this, strParam);
+        GetParameterValueFromPollerExecutor executor = new GetParameterValueFromPollerExecutor( this, strParam);
         executor.StartThread();
         
         boolean bContinue = true;

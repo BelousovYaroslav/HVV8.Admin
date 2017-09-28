@@ -5,10 +5,7 @@
  */
 package hvv_admin.dialogs.step10;
 
-import hvv_admin.dialogs.step08.*;
 import hvv_admin.HVV_Admin;
-import hvv_admin.comm.CommandItem;
-import hvv_admin.comm.executors.AStatementExeThread;
 import java.util.LinkedList;
 import org.apache.log4j.Logger;
 
@@ -19,7 +16,7 @@ import org.apache.log4j.Logger;
 public class P5PollerRunnable extends HVV_Communication.executors.AStatementExeRunnable {
     static final Logger logger = Logger.getLogger( P5PollerRunnable.class);
     
-    private HVV_Admin theApp;
+    private final HVV_Admin theApp;
     private boolean m_bSent;
     private boolean m_bGotAnswer;
     private boolean m_bTimeOut;

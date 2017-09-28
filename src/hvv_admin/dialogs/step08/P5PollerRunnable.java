@@ -6,7 +6,6 @@
 package hvv_admin.dialogs.step08;
 
 import hvv_admin.HVV_Admin;
-import hvv_admin.comm.CommandItem;
 import java.util.LinkedList;
 import org.apache.log4j.Logger;
 

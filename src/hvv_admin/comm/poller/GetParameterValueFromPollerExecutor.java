@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
  *
  * @author yaroslav
  */
-public class GetExecutor {
+public class GetParameterValueFromPollerExecutor {
 
     public class ProcessorRunnable extends AStatementExeRunnable {
 
@@ -117,7 +117,7 @@ public class GetExecutor {
         
     }
     
-    static Logger logger = Logger.getLogger(GetExecutor.class);            
+    static Logger logger = Logger.getLogger(GetParameterValueFromPollerExecutor.class);            
     
     private boolean m_bGotAnswer;
     public boolean IsAnswerReceived() { return m_bGotAnswer; }
@@ -139,7 +139,7 @@ public class GetExecutor {
     final HVV_Admin theApp;
     final String m_strParameter;
     
-    public GetExecutor( HVV_Admin app, String strProgram) {
+    public GetParameterValueFromPollerExecutor( HVV_Admin app, String strProgram) {
         theApp = app;
         m_strParameter = strProgram;
     }
