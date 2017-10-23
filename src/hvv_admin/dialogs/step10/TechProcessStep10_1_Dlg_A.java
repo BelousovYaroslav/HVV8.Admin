@@ -808,7 +808,6 @@ public class TechProcessStep10_1_Dlg_A extends javax.swing.JDialog {
                 
             case 21:
                 if( theApp.GetSettings().GetDebugShortenProgItems() == false) {
-                    m_lstProgram.add( new GettersActivationProgramStep(  5, 30));
                     m_lstProgram.add( new GettersActivationProgramStep(  5, 25));
                     m_lstProgram.add( new GettersActivationProgramStep(  5, 20));    
                 }
@@ -886,7 +885,6 @@ public class TechProcessStep10_1_Dlg_A extends javax.swing.JDialog {
                     m_lstProgram.add( new GettersActivationProgramStep(  5, 20));
                     m_lstProgram.add( new GettersActivationProgramStep(  5, 25));
                     m_lstProgram.add( new GettersActivationProgramStep(  5, 30));
-                    m_lstProgram.add( new GettersActivationProgramStep(  5, 35));
                 }
                 m_pnlSteps.edtDuration.setText( "5");
                 m_pnlSteps.edtPower.setText( "40");
