@@ -1067,9 +1067,9 @@ public class TechProcessStep10_1_Dlg_M extends javax.swing.JDialog {
                 
         info.SetStopDateAsCurrent();
         info.SetStopReportTitle( "Завершение процесса активации");
-        info.SetStopP5( theApp.GetFromPoller( "005.01"));
-        info.SetStopP6( theApp.GetFromPoller( "006.01"));
-        info.SetStopP7( theApp.GetFromPoller( "007.01"));
+        info.SetStopP5( theApp.GetDoubleFromPoller( "005.01"));
+        info.SetStopP6( theApp.GetDoubleFromPoller( "006.01"));
+        info.SetStopP7( theApp.GetDoubleFromPoller( "007.01"));
 
         theApp.NextCurrentStep();
         logger.info( "Перещёлкнулись на 10.2");
@@ -1080,9 +1080,9 @@ public class TechProcessStep10_1_Dlg_M extends javax.swing.JDialog {
             
             info.SetStartDateAsCurrent();
             info.SetStartReportTitle( "Старт программы открытия геттера");
-            info.SetStartP5( theApp.GetFromPoller( "005.01"));
-            info.SetStartP6( theApp.GetFromPoller( "006.01"));
-            info.SetStartP7( theApp.GetFromPoller( "007.01"));
+            info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+            info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+            info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
             theApp.SaveStepInfo( "182", info, true);
 

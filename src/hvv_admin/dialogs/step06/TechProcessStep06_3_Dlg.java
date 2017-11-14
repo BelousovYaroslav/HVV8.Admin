@@ -393,9 +393,9 @@ public class TechProcessStep06_3_Dlg extends javax.swing.JDialog {
             
             info.SetStopDateAsCurrent();
             info.SetStopReportTitle( "Внесение комментариев");
-            info.SetStopP5( theApp.GetFromPoller( "005.01"));
-            info.SetStopP6( theApp.GetFromPoller( "006.01"));
-            info.SetStopP7( theApp.GetFromPoller( "007.01"));
+            info.SetStopP5( theApp.GetDoubleFromPoller( "005.01"));
+            info.SetStopP6( theApp.GetDoubleFromPoller( "006.01"));
+            info.SetStopP7( theApp.GetDoubleFromPoller( "007.01"));
             
             if( chkDev1.isSelected() && chkDev2.isSelected() && chkDev3.isSelected() && chkDev4.isSelected() &&
                     chkDev5.isSelected() && chkDev6.isSelected() && chkDev7.isSelected() && chkDev8.isSelected()) {
@@ -408,9 +408,9 @@ public class TechProcessStep06_3_Dlg extends javax.swing.JDialog {
 
                     info.SetStartDateAsCurrent();
                     info.SetStartReportTitle( "Старт программы закрытия геттера");
-                    info.SetStartP5( theApp.GetFromPoller( "005.01"));
-                    info.SetStartP6( theApp.GetFromPoller( "006.01"));
-                    info.SetStartP7( theApp.GetFromPoller( "007.01"));
+                    info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+                    info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+                    info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
                     theApp.SaveStepInfo( "221", info, true);
 
@@ -427,9 +427,9 @@ public class TechProcessStep06_3_Dlg extends javax.swing.JDialog {
 
                     info.SetStartDateAsCurrent();
                     info.SetStartReportTitle( "Старт откачки рабочей смеси");
-                    info.SetStartP5( theApp.GetFromPoller( "005.01"));
-                    info.SetStartP6( theApp.GetFromPoller( "006.01"));
-                    info.SetStartP7( theApp.GetFromPoller( "007.01"));
+                    info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+                    info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+                    info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
                     theApp.SaveStepInfo("104", info, true);
 

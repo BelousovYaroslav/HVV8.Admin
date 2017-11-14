@@ -90,9 +90,9 @@ public class TechProcessStep11_6_Dlg extends javax.swing.JDialog {
             
             info.SetStopDateAsCurrent();
             info.SetStopReportTitle( "Завершение герметизации годных приборов");
-            info.SetStopP5( theApp.GetFromPoller( "005.01"));
-            info.SetStopP6( theApp.GetFromPoller( "006.01"));
-            info.SetStopP7( theApp.GetFromPoller( "007.01"));
+            info.SetStopP5( theApp.GetDoubleFromPoller( "005.01"));
+            info.SetStopP6( theApp.GetDoubleFromPoller( "006.01"));
+            info.SetStopP7( theApp.GetDoubleFromPoller( "007.01"));
                     
             //ОПРЕДЕЛИМ ЕСТЬ ЛИ СОШЕДШИЕ ПРИБОРЫ
             boolean b_11_6_HaveBad = false;
@@ -115,9 +115,9 @@ public class TechProcessStep11_6_Dlg extends javax.swing.JDialog {
 
                     info.SetStartDateAsCurrent();
                     info.SetStartReportTitle( "Старт программы закрытия геттера");
-                    info.SetStartP5( theApp.GetFromPoller( "005.01"));
-                    info.SetStartP6( theApp.GetFromPoller( "006.01"));
-                    info.SetStartP7( theApp.GetFromPoller( "007.01"));
+                    info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+                    info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+                    info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
                     theApp.SaveStepInfo( "221", info, true);
                     
@@ -139,9 +139,9 @@ public class TechProcessStep11_6_Dlg extends javax.swing.JDialog {
                     
                     info.SetStartDateAsCurrent();
                     info.SetStartReportTitle( "Старт программы откачки смеси с геттера");
-                    info.SetStartP5( theApp.GetFromPoller( "005.01"));
-                    info.SetStartP6( theApp.GetFromPoller( "006.01"));
-                    info.SetStartP7( theApp.GetFromPoller( "007.01"));
+                    info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+                    info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+                    info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
                     theApp.SaveStepInfo( "244", info, true);
 

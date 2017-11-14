@@ -79,7 +79,7 @@ public class TechProcessStep08_1_Dlg extends javax.swing.JDialog {
             m_rnblP5Watchdog.DropMax();
             
             //... и последний текущий P5
-            item.SetP5_last( theApp.GetFromPoller( "005.01"));
+            item.SetP5_last( theApp.GetDoubleFromPoller( "005.01"));
             
             m_nPhase++;
             if( m_nPhase == m_lstProgram.size()) {
@@ -433,7 +433,7 @@ public class TechProcessStep08_1_Dlg extends javax.swing.JDialog {
         
                 //Переходим к следующему шагу обезгаживания
                 GettersActivationProgramStep item = ( GettersActivationProgramStep) m_lstProgram.get( m_nPhase);
-                item.SetP5_start( theApp.GetFromPoller( "005.01"));
+                item.SetP5_start( theApp.GetDoubleFromPoller( "005.01"));
 
                 int nTime;
                 if( theApp.GetSettings().GetDebugShortenProgTimes())
@@ -1739,7 +1739,7 @@ public class TechProcessStep08_1_Dlg extends javax.swing.JDialog {
             m_pGetActProgram.SetGetter(HVV_AdminConstants.GETTER2);
                 
         GettersActivationProgramStep item = ( GettersActivationProgramStep) m_lstProgram.get( m_nPhase);
-        item.SetP5_start( theApp.GetFromPoller( "005.01"));
+        item.SetP5_start( theApp.GetDoubleFromPoller( "005.01"));
         
         m_rnblP5Watchdog.DropMax();
         

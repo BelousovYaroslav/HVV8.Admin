@@ -489,18 +489,18 @@ public class TechProcessStep13Panel extends TechProcessStepPanelTemplate {
 
             info.SetStopDateAsCurrent();
             info.SetStopReportTitle( "Завершение программы bypass-откачки");
-            info.SetStopP5( theApp.GetFromPoller( "005.01"));
-            info.SetStopP6( theApp.GetFromPoller( "006.01"));
-            info.SetStopP7( theApp.GetFromPoller( "007.01"));
+            info.SetStopP5( theApp.GetDoubleFromPoller( "005.01"));
+            info.SetStopP6( theApp.GetDoubleFromPoller( "006.01"));
+            info.SetStopP7( theApp.GetDoubleFromPoller( "007.01"));
 
             theApp.NextCurrentStep();
 
             info = new TechProcessStepInfo( theApp);
             info.SetStartDateAsCurrent();
             info.SetStartReportTitle( "Старт проверки герметичности");
-            info.SetStartP5( theApp.GetFromPoller( "005.01"));
-            info.SetStartP6( theApp.GetFromPoller( "006.01"));
-            info.SetStartP7( theApp.GetFromPoller( "007.01"));
+            info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+            info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+            info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
             theApp.SaveStepInfo( "242", info, true);
 
@@ -543,9 +543,9 @@ public class TechProcessStep13Panel extends TechProcessStepPanelTemplate {
 
             info.SetStopDateAsCurrent();
             info.SetStopReportTitle( "Завершение откачки смеси с геттера");
-            info.SetStopP5( theApp.GetFromPoller( "005.01"));
-            info.SetStopP6( theApp.GetFromPoller( "006.01"));
-            info.SetStopP7( theApp.GetFromPoller( "007.01"));
+            info.SetStopP5( theApp.GetDoubleFromPoller( "005.01"));
+            info.SetStopP6( theApp.GetDoubleFromPoller( "006.01"));
+            info.SetStopP7( theApp.GetDoubleFromPoller( "007.01"));
 
             //theApp.NextCurrentStep();
             theApp.SetCurrentStep( 245);  //<<-- Да, несуществующий. Но это спрячет кнопку "Финиш"  :)
@@ -572,9 +572,9 @@ public class TechProcessStep13Panel extends TechProcessStepPanelTemplate {
         
         info.SetStartDateAsCurrent();
         info.SetStartReportTitle( "Старт программы bypass-откачки");
-        info.SetStartP5( theApp.GetFromPoller( "005.01"));
-        info.SetStartP6( theApp.GetFromPoller( "006.01"));
-        info.SetStartP7( theApp.GetFromPoller( "007.01"));
+        info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+        info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+        info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
         theApp.SaveStepInfo("241", info, true);
 
@@ -607,9 +607,9 @@ public class TechProcessStep13Panel extends TechProcessStepPanelTemplate {
         
         info.SetStartDateAsCurrent();
         info.SetStartReportTitle( "Старт откачки смеси с геттера");
-        info.SetStartP5( theApp.GetFromPoller( "005.01"));
-        info.SetStartP6( theApp.GetFromPoller( "006.01"));
-        info.SetStartP7( theApp.GetFromPoller( "007.01"));
+        info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+        info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+        info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
         theApp.SaveStepInfo( "244", info, true);
 

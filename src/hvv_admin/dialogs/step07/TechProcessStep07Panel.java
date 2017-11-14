@@ -1378,18 +1378,18 @@ public class TechProcessStep07Panel extends TechProcessStepPanelTemplate {
 
             info.SetStopDateAsCurrent();
             info.SetStopReportTitle( "Завершение программы перехода на основную откачку");
-            info.SetStopP5( theApp.GetFromPoller( "005.01"));
-            info.SetStopP6( theApp.GetFromPoller( "006.01"));
-            info.SetStopP7( theApp.GetFromPoller( "007.01"));
+            info.SetStopP5( theApp.GetDoubleFromPoller( "005.01"));
+            info.SetStopP6( theApp.GetDoubleFromPoller( "006.01"));
+            info.SetStopP7( theApp.GetDoubleFromPoller( "007.01"));
 
             theApp.NextCurrentStep();
 
             info = new TechProcessStepInfo( theApp);
             info.SetStartDateAsCurrent();
             info.SetStartReportTitle( "Начало процесса обезгаживания");
-            info.SetStartP5( theApp.GetFromPoller( "005.01"));
-            info.SetStartP6( theApp.GetFromPoller( "006.01"));
-            info.SetStartP7( theApp.GetFromPoller( "007.01"));
+            info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+            info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+            info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
             theApp.SaveStepInfo( "141", info, true);
 
@@ -1485,9 +1485,9 @@ public class TechProcessStep07Panel extends TechProcessStepPanelTemplate {
         
         info.SetStartDateAsCurrent();
         info.SetStartReportTitle( "Старт программы перехода на основную откачку");
-        info.SetStartP5( theApp.GetFromPoller( "005.01"));
-        info.SetStartP6( theApp.GetFromPoller( "006.01"));
-        info.SetStartP7( theApp.GetFromPoller( "007.01"));
+        info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+        info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+        info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
         theApp.SaveStepInfo( "133", info, true);
 

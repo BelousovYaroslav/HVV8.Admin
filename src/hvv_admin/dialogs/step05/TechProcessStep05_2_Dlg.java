@@ -57,9 +57,9 @@ public class TechProcessStep05_2_Dlg extends javax.swing.JDialog {
 
                         info.SetStartDateAsCurrent();
                         info.SetStartReportTitle( "Открытие геттера");
-                        info.SetStartP5( theApp.GetFromPoller( "005.01"));
-                        info.SetStartP6( theApp.GetFromPoller( "006.01"));
-                        info.SetStartP7( theApp.GetFromPoller( "007.01"));
+                        info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+                        info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+                        info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
                         theApp.SaveStepInfo( "082.1", info, true);
 
@@ -223,9 +223,9 @@ public class TechProcessStep05_2_Dlg extends javax.swing.JDialog {
             
             info.SetStopDateAsCurrent();
             info.SetStopReportTitle( "");
-            info.SetStopP5( theApp.GetFromPoller( "005.01"));
-            info.SetStopP6( theApp.GetFromPoller( "006.01"));
-            info.SetStopP7( theApp.GetFromPoller( "007.01"));
+            info.SetStopP5( theApp.GetDoubleFromPoller( "005.01"));
+            info.SetStopP6( theApp.GetDoubleFromPoller( "006.01"));
+            info.SetStopP7( theApp.GetDoubleFromPoller( "007.01"));
             
             theApp.NextCurrentStep();
             
@@ -233,9 +233,9 @@ public class TechProcessStep05_2_Dlg extends javax.swing.JDialog {
 
             info.SetStartDateAsCurrent();
             //report string смотри ниже
-            info.SetStartP5( theApp.GetFromPoller( "005.01"));
-            info.SetStartP6( theApp.GetFromPoller( "006.01"));
-            info.SetStartP7( theApp.GetFromPoller( "007.01"));
+            info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+            info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+            info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
             theApp.SaveStepInfo( "083", info, true);
                 
@@ -245,9 +245,9 @@ public class TechProcessStep05_2_Dlg extends javax.swing.JDialog {
                 
                 info.SetStopDateAsCurrent();
                 info.SetStopReportTitle( "");
-                info.SetStopP5( theApp.GetFromPoller( "005.01"));
-                info.SetStopP6( theApp.GetFromPoller( "006.01"));
-                info.SetStopP7( theApp.GetFromPoller( "007.01"));
+                info.SetStopP5( theApp.GetDoubleFromPoller( "005.01"));
+                info.SetStopP6( theApp.GetDoubleFromPoller( "006.01"));
+                info.SetStopP7( theApp.GetDoubleFromPoller( "007.01"));
                 
                 //переход к пункту 5.4
                 theApp.NextCurrentStep();
@@ -258,9 +258,9 @@ public class TechProcessStep05_2_Dlg extends javax.swing.JDialog {
                     
                     info.SetStartDateAsCurrent();
                     info.SetStartReportTitle( "Старт напуска рабочей смеси");
-                    info.SetStartP5( theApp.GetFromPoller( "005.01"));
-                    info.SetStartP6( theApp.GetFromPoller( "006.01"));
-                    info.SetStartP7( theApp.GetFromPoller( "007.01"));
+                    info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+                    info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+                    info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
                     theApp.SaveStepInfo( "084", info, true);
 

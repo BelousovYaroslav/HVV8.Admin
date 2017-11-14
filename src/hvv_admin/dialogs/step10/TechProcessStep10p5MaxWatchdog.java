@@ -44,7 +44,7 @@ public class TechProcessStep10p5MaxWatchdog implements Runnable {
     public void run() {
         m_bContinue = true;
         while( m_bContinue) {
-            ProcessValue( theApp.GetFromPoller( "005.01"));
+            ProcessValue( theApp.GetDoubleFromPoller( "005.01"));
             try {
                 Thread.sleep( 10);
             } catch( InterruptedException ex) {

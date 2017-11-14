@@ -171,9 +171,9 @@ public abstract class TechProcessStepPanelTemplate extends javax.swing.JPanel {
         TechProcessStepInfo info = new TechProcessStepInfo( theApp);
         info.SetStartDateAsCurrent();
         info.SetStartReportTitle( strCurrentStepStartTitle);
-        info.SetStartP5( theApp.GetFromPoller( "005.01"));
-        info.SetStartP6( theApp.GetFromPoller( "006.01"));
-        info.SetStartP7( theApp.GetFromPoller( "007.01"));
+        info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+        info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+        info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
         theApp.SaveStepInfo( strCurrentStep, info, true);
 
@@ -198,9 +198,9 @@ public abstract class TechProcessStepPanelTemplate extends javax.swing.JPanel {
 
             info.SetStopDateAsCurrent();
             info.SetStopReportTitle( strCurrentStepStopTitle);
-            info.SetStopP5( theApp.GetFromPoller( "005.01"));
-            info.SetStopP6( theApp.GetFromPoller( "006.01"));
-            info.SetStopP7( theApp.GetFromPoller( "007.01"));
+            info.SetStopP5( theApp.GetDoubleFromPoller( "005.01"));
+            info.SetStopP6( theApp.GetDoubleFromPoller( "006.01"));
+            info.SetStopP7( theApp.GetDoubleFromPoller( "007.01"));
 
             theApp.NextCurrentStep();
             
@@ -209,9 +209,9 @@ public abstract class TechProcessStepPanelTemplate extends javax.swing.JPanel {
                 
                 info.SetStartDateAsCurrent();
                 info.SetStartReportTitle( strNextStepStartTitle);
-                info.SetStartP5( theApp.GetFromPoller( "005.01"));
-                info.SetStartP6( theApp.GetFromPoller( "006.01"));
-                info.SetStartP7( theApp.GetFromPoller( "007.01"));
+                info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+                info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+                info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
                 //theApp.m_pMainWnd.m_EmuTimer.start();
                 theApp.SetCurrentStepInProgress( true);

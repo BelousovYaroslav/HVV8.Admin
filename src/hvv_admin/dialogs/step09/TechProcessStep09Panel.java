@@ -993,9 +993,9 @@ public class TechProcessStep09Panel extends TechProcessStepPanelTemplate {
 
             info.SetStopDateAsCurrent();
             info.SetStopReportTitle( "Завершение программы перехода на основную откачку");
-            info.SetStopP5( theApp.GetFromPoller( "005.01"));
-            info.SetStopP6( theApp.GetFromPoller( "006.01"));
-            info.SetStopP7( theApp.GetFromPoller( "007.01"));
+            info.SetStopP5( theApp.GetDoubleFromPoller( "005.01"));
+            info.SetStopP6( theApp.GetDoubleFromPoller( "006.01"));
+            info.SetStopP7( theApp.GetDoubleFromPoller( "007.01"));
 
             theApp.NextCurrentStep();
 
@@ -1003,9 +1003,9 @@ public class TechProcessStep09Panel extends TechProcessStepPanelTemplate {
             
             info.SetStartDateAsCurrent();
             info.SetStartReportTitle( "Начало процесса активации");
-            info.SetStartP5( theApp.GetFromPoller( "005.01"));
-            info.SetStartP6( theApp.GetFromPoller( "006.01"));
-            info.SetStartP7( theApp.GetFromPoller( "007.01"));
+            info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+            info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+            info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
             theApp.SaveStepInfo( "181", info, true);
 

@@ -311,9 +311,9 @@ public class TechProcessStep01Panel extends TechProcessStepPanelTemplate {
 
         info.SetStartDateAsCurrent();
         info.SetStartReportTitle( "Старт напуска азота");
-        info.SetStartP5( theApp.GetFromPoller( "005.01"));
-        info.SetStartP6( theApp.GetFromPoller( "006.01"));
-        info.SetStartP7( theApp.GetFromPoller( "007.01"));
+        info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+        info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+        info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
         theApp.SaveStepInfo( "001", info, true);
 
@@ -350,9 +350,9 @@ public class TechProcessStep01Panel extends TechProcessStepPanelTemplate {
             
             info.SetStopDateAsCurrent();
             info.SetStopReportTitle( "Окончание напуска азота");
-            info.SetStopP5( theApp.GetFromPoller( "005.01"));
-            info.SetStopP6( theApp.GetFromPoller( "006.01"));
-            info.SetStopP7( theApp.GetFromPoller( "007.01"));
+            info.SetStopP5( theApp.GetDoubleFromPoller( "005.01"));
+            info.SetStopP6( theApp.GetDoubleFromPoller( "006.01"));
+            info.SetStopP7( theApp.GetDoubleFromPoller( "007.01"));
 
             theApp.NextCurrentStep();
 
@@ -360,9 +360,9 @@ public class TechProcessStep01Panel extends TechProcessStepPanelTemplate {
 
             info.SetStartDateAsCurrent();
             info.SetStartReportTitle( "");
-            info.SetStartP5( theApp.GetFromPoller( "005.01"));
-            info.SetStartP6( theApp.GetFromPoller( "006.01"));
-            info.SetStartP7( theApp.GetFromPoller( "007.01"));
+            info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+            info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+            info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
 
             theApp.SaveStepInfo( "021", info, true);
 

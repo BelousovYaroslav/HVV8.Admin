@@ -475,9 +475,9 @@ public class TechProcessStep02_1_Dlg1 extends javax.swing.JDialog {
             
             info.SetStopDateAsCurrent();
             info.SetStopReportTitle( "Установка резонаторов");
-            info.SetStopP5( theApp.GetFromPoller( "005.01"));
-            info.SetStopP6( theApp.GetFromPoller( "006.01"));
-            info.SetStopP7( theApp.GetFromPoller( "007.01"));
+            info.SetStopP5( theApp.GetDoubleFromPoller( "005.01"));
+            info.SetStopP6( theApp.GetDoubleFromPoller( "006.01"));
+            info.SetStopP7( theApp.GetDoubleFromPoller( "007.01"));
             
             theApp.NextCurrentStep();
 
@@ -486,9 +486,9 @@ public class TechProcessStep02_1_Dlg1 extends javax.swing.JDialog {
                 
                 info.SetStartDateAsCurrent();
                 info.SetStartReportTitle( "Старт предварительной откачки");
-                info.SetStartP5( theApp.GetFromPoller( "005.01"));
-                info.SetStartP6( theApp.GetFromPoller( "006.01"));
-                info.SetStartP7( theApp.GetFromPoller( "007.01"));
+                info.SetStartP5( theApp.GetDoubleFromPoller( "005.01"));
+                info.SetStartP6( theApp.GetDoubleFromPoller( "006.01"));
+                info.SetStartP7( theApp.GetDoubleFromPoller( "007.01"));
                 
                 theApp.SaveStepInfo( "022", info, true);
                 

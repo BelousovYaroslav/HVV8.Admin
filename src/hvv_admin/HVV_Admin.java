@@ -6,9 +6,10 @@ package hvv_admin;
  * and open the template in the editor.
  */
 
+import HVV_Communication.CommandItem;
 import HVV_Communication.client.HVV_Comm_client;
+import HVV_Communication.executors.AStatementExeRunnable;
 import hvv_admin.comm.executor.from.HVV_Communication_E2A;
-import hvv_admin.comm.poller.GetParameterValueFromPollerExecutor;
 import hvv_admin.dialogs.HVV_Admin_MainFrame;
 import hvv_admin.dialogs.step02.TechProcessStep02_1_Dlg1;
 import hvv_admin.dialogs.step02.TechProcessStep02_3_Dlg;
@@ -43,6 +44,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.TreeMap;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.YES_OPTION;
@@ -1257,7 +1259,101 @@ public class HVV_Admin {
         return dt;
     }
     
-    public double GetFromPoller( String strParam) {
+    private class SimpleGetDoubleProcessor extends AStatementExeRunnable {
+        Logger logger = Logger.getLogger( SimpleGetDoubleProcessor.class);            
+        
+        String m_strCommLogMarker;
+        
+        boolean m_bGotAnswer;
+        boolean m_bTimeOut;
+        Double m_dblResultValue;
+        
+        public SimpleGetDoubleProcessor(  String strCommLogMarker) {
+            m_strCommLogMarker = strCommLogMarker;
+        }
+                
+        @Override
+        public void processResponse(LinkedList ll) {
+            int nCode = ( int) ll.get( 0);
+            logger.debug( m_strCommLogMarker + "processResponse( " + nCode + ") call for SimpleGetDoubleProcessor.");
+
+            if( nCode == 0) {
+                if( ll.size() == 2) {
+                    m_dblResultValue = ( double) ll.get( 1);
+                    logger.trace( "GET-command is processed successfully. got value=" + m_dblResultValue);                    
+                }
+                else
+                    logger.error( m_strCommLogMarker + "RetCode for GET-command = 0, but response length != 2! STRANGE!");
+            }
+            else if( nCode == 100) {
+                logger.warn( m_strCommLogMarker + "Server want to exit! FUCK! We SHOULD disconnect here! А это потащит за собой theApp чтобы получить объект отправляющий quit назад! FUCK FUCK FUCK");
+                
+            }
+            else {
+                logger.warn( m_strCommLogMarker + "Got problem answer! Don't processing! (TODO)");
+            }
+            m_bGotAnswer = true;
+        }
+
+        @Override
+        public void processTimeOut() {
+            logger.warn( m_strCommLogMarker + "processTimeOut() call for SimpleGetDoubleProcessor. Empty statement!");
+            m_bTimeOut = true;
+        }
+
+        @Override
+        public void run() {
+            m_dblResultValue = Double.NaN;
+            m_bGotAnswer = false;
+            m_bTimeOut = false;
+            
+            do {
+
+                if( m_bGotAnswer == true) {
+                    logger.debug( m_strCommLogMarker + "GET; RESPONDED;");
+                }
+
+                if( m_bTimeOut == true) {
+                    logger.warn( m_strCommLogMarker + "GET; TIMEOUT;");
+                }
+
+
+                try {
+                    sleep( 100);
+                } catch (InterruptedException ex) {
+                    logger.error( m_strCommLogMarker + "InterruptedException caught!", ex);
+                }
+
+            } while( !( m_bGotAnswer || m_bTimeOut));
+        }
+    }
+    
+    public double GetDoubleFromPoller( String strParam) {
+        LinkedList lst = new LinkedList();
+
+        //START_PROGRAM
+        lst.addLast( "GET");
+        lst.addLast( strParam);
+
+        SimpleGetDoubleProcessor processor = new SimpleGetDoubleProcessor( GetCommA2P().m_strMarker);
+        Thread thr = new Thread( processor);
+        thr.start();
+            
+        //ADDING COMMAND TO OUTPUT QUEUE WITH MENTION ABOUT ITSELF AS PROCESSOR
+        CommandItem item = new CommandItem( processor, lst);
+        GetCommA2P().GetRxTx().AddCommandToQueue( item);
+        logger.info( GetCommA2P().m_strMarker + "GET; QUEUED;");
+        
+        try {
+            thr.join( 1000);
+        } catch( InterruptedException ex) {
+            logger.warn( "Случилась InterruptedException при ожидании ответа на GET-double-параметр '" + strParam + "' от POLLER'a ", ex);
+        }
+        
+        return processor.m_dblResultValue;
+        
+        /*
+        
         double dblResult = Double.NaN;
         GetParameterValueFromPollerExecutor executor = new GetParameterValueFromPollerExecutor( this, strParam);
         executor.StartThread();
@@ -1287,5 +1383,7 @@ public class HVV_Admin {
         } while( bContinue);
         
         return dblResult;
+        */
+        
     }
 }
