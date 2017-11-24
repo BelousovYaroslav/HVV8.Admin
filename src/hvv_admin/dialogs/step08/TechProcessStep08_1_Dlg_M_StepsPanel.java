@@ -50,7 +50,7 @@ public class TechProcessStep08_1_Dlg_M_StepsPanel extends javax.swing.JPanel {
         if( nExp < 0) nExp--;
         
         float dblMant = ( float) ( dbl / Math.pow( 10, nExp));
-        if( nExp == -5)
+        if( nExp >= -5)
             lbl.setBackground( m_niceRed);      //lbl.setBorder( m_borderRed);
         else
             lbl.setBackground( null);           //lbl.setBorder( m_borderGrey);

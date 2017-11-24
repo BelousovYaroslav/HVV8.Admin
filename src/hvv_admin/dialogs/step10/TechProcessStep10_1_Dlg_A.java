@@ -887,7 +887,7 @@ public class TechProcessStep10_1_Dlg_A extends javax.swing.JDialog {
                     m_lstProgram.add( new GettersActivationProgramStep(  5, 30));
                 }
                 m_pnlSteps.edtDuration.setText( "5");
-                m_pnlSteps.edtPower.setText( "40");
+                m_pnlSteps.edtPower.setText( "35");
             break;
                 
             case 22:

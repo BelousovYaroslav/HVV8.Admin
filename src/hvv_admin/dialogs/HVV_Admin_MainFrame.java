@@ -716,7 +716,7 @@ public class HVV_Admin_MainFrame extends javax.swing.JFrame {
         
         theApp = app;
         
-        setTitle( "Административный модуль, v1.0.0.0, (2017.11.16 14:00)  (С) ФЛАВТ, 2017.");
+        setTitle( "Административный модуль, v1.0.0.0, (2017.11.24 10:50)  (С) ФЛАВТ, 2017.");
         
         m_pPanel = new TechProcessPanel5( app);
         m_pPanel.setVisible( true);

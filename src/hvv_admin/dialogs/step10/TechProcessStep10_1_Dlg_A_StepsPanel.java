@@ -1749,7 +1749,7 @@ public class TechProcessStep10_1_Dlg_A_StepsPanel extends javax.swing.JPanel {
         switch( m_pParent.m_nProgramType) {
             case 11: btnTrailing.setText( "Завершить серией мощностей 45-40-35 и т.д."); break;
             case 12: btnTrailing.setText( "Завершить серией мощностей 26-24-22 и т.д."); break;
-            case 21: btnTrailing.setText( "Завершить серией мощностей 35-30-25 и т.д."); break;
+            case 21: btnTrailing.setText( "Завершить серией мощностей 25-20-15 и т.д."); break;
             case 22: btnTrailing.setText( "Завершить серией мощностей 26-24-22 и т.д."); break;
             default: btnTrailing.setText( "Завершить серией мощностей для гет? инд?"); break;
         }
