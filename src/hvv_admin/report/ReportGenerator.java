@@ -2127,7 +2127,7 @@ public class ReportGenerator {
 
                     
             writer.write( "<P style=\"page-break-before: always\">\n");
-            writer.write( "<h3>Промежуточные комментарии</h3>\n");
+            writer.write( "<h3>Итоговые комментарии</h3>\n");
             writer.write( "<table>\n <tr>\n");
             writer.write( "  <th width=\"120\" align=\"left\"></th>\n");
             writer.write( "  <th width=\"100\" align=\"left\"></th>\n");
