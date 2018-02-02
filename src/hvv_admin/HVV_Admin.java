@@ -1111,7 +1111,8 @@ public class HVV_Admin {
         
         java.awt.EventQueue.invokeLater( new Runnable() {
             public void run() {
-                m_pMainWnd.setVisible( true);
+                ShowDlg10( 100);
+                //m_pMainWnd.setVisible( true);
             }
         });
     }

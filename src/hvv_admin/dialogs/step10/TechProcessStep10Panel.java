@@ -316,8 +316,6 @@ public class TechProcessStep10Panel extends TechProcessStepPanelTemplate {
             m_bCollapsed = false;
         
         //10. Активация рабочих геттеров
- 
-
         FillHeaderStepDates( "181", lbl_10_00_Date_start, lbl_10_00_Time_start, "182", lbl_10_00_Date_stop, lbl_10_00_Time_stop);
         
         lbl_10_00_IcoStep.setIcon( m_bCollapsed ? theApp.GetResources().getIconTriaRight() : theApp.GetResources().getIconTriaDown());

@@ -808,7 +808,18 @@ public class TechProcessStep10_1_Dlg_A extends javax.swing.JDialog {
                 
             case 21:
                 if( theApp.GetSettings().GetDebugShortenProgItems() == false) {
-                    m_lstProgram.add( new GettersActivationProgramStep(  5, 25));
+                    int nLastPower = (( GettersActivationProgramStep) m_lstProgram.getLast()).GetPower();
+                    int nTraillingPower = nLastPower;
+                    do {
+                        if( ( nTraillingPower % 5) < 3) {
+                            nTraillingPower -= ( nTraillingPower % 5);
+                            nTraillingPower -= 5;
+                        }
+                        else
+                            nTraillingPower -= ( nTraillingPower % 5);
+                        m_lstProgram.add( new GettersActivationProgramStep(  5, nTraillingPower));
+                    } while( nTraillingPower > 25);
+                    //m_lstProgram.add( new GettersActivationProgramStep(  5, 25));
                     m_lstProgram.add( new GettersActivationProgramStep(  5, 20));    
                 }
                 m_lstProgram.add( new GettersActivationProgramStep(  3, 15));
@@ -817,7 +828,17 @@ public class TechProcessStep10_1_Dlg_A extends javax.swing.JDialog {
                 
             case 22:
                 if( theApp.GetSettings().GetDebugShortenProgItems() == false) {
-                    m_lstProgram.add( new GettersActivationProgramStep( 2, 26));
+                    int nLastPower = (( GettersActivationProgramStep) m_lstProgram.getLast()).GetPower();
+                    int nTrailingPower = nLastPower;
+                    do {
+                        if( ( nTrailingPower % 2) == 1)
+                            nTrailingPower -= 3;
+                        else
+                            nTrailingPower -= 2;
+                        
+                        m_lstProgram.add( new GettersActivationProgramStep(  2, nTrailingPower));
+                    } while( nTrailingPower > 26);
+                    //m_lstProgram.add( new GettersActivationProgramStep( 2, 26));
                     m_lstProgram.add( new GettersActivationProgramStep( 2, 24));
                     m_lstProgram.add( new GettersActivationProgramStep( 2, 22));
                     m_lstProgram.add( new GettersActivationProgramStep( 2, 20));
