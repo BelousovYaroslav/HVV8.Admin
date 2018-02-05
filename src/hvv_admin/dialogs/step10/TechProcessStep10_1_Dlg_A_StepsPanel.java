@@ -359,7 +359,7 @@ public class TechProcessStep10_1_Dlg_A_StepsPanel extends javax.swing.JPanel {
         edtPower.setBounds(60, 420, 70, 30);
 
         btnTrailing.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
-        btnTrailing.setText("Завершить серией 26-24-22 и т.д.");
+        btnTrailing.setText("Завершить серией спадающих мощностей");
         btnTrailing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTrailingActionPerformed(evt);
@@ -1746,6 +1746,7 @@ public class TechProcessStep10_1_Dlg_A_StepsPanel extends javax.swing.JPanel {
         btnTrailing.setVisible( !(m_pParent.m_nInProgress == -1));
         btnTrailing.setLocation(  0, 30 * ( m_pParent.m_lstProgram.size() + 1));
         
+        /*
         switch( m_pParent.m_nProgramType) {
             case 11: btnTrailing.setText( "Завершить серией мощностей 45-40-35 и т.д."); break;
             case 12: btnTrailing.setText( "Завершить серией мощностей 26-24-22 и т.д."); break;
@@ -1753,6 +1754,7 @@ public class TechProcessStep10_1_Dlg_A_StepsPanel extends javax.swing.JPanel {
             case 22: btnTrailing.setText( "Завершить серией мощностей 26-24-22 и т.д."); break;
             default: btnTrailing.setText( "Завершить серией мощностей для гет? инд?"); break;
         }
+        */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
