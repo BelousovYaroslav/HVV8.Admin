@@ -11,6 +11,7 @@ import hvv_admin.HVV_Admin;
 import hvv_admin.comm.executor.to.StartProgramExecutor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.ToolTipManager;
 import org.apache.log4j.Level;
@@ -716,7 +717,7 @@ public class HVV_Admin_MainFrame extends javax.swing.JFrame {
         
         theApp = app;
         
-        setTitle( "Административный модуль, v1.0.0.0, (2017.11.24 10:50)  (С) ФЛАВТ, 2017.");
+        setTitle( "Административный модуль, 2018.02.05 15:30  (С) ФЛАВТ, 2018.");
         
         m_pPanel = new TechProcessPanel5( app);
         m_pPanel.setVisible( true);
@@ -759,8 +760,8 @@ public class HVV_Admin_MainFrame extends javax.swing.JFrame {
 
         btnGroupLogLevel = new javax.swing.ButtonGroup();
         pnlPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        btnExit = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
         jScrollBar1 = new javax.swing.JScrollBar();
         m_lblIconExecutorFrom = new javax.swing.JLabel();
         lblTitleExecutor = new javax.swing.JLabel();
@@ -782,6 +783,11 @@ public class HVV_Admin_MainFrame extends javax.swing.JFrame {
         setTitle("Title");
         setMinimumSize(new java.awt.Dimension(1050, 1000));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         pnlPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 230, 230)));
@@ -807,20 +813,19 @@ public class HVV_Admin_MainFrame extends javax.swing.JFrame {
         getContentPane().add(pnlPanel);
         pnlPanel.setBounds(10, 40, 1004, 854);
 
-        jButton1.setText("Выход");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnExit.setText("Выход");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnExitActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(930, 910, 100, 40);
+        getContentPane().add(btnExit);
+        btnExit.setBounds(930, 910, 100, 40);
 
-        jLabel1.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
-        jLabel1.setText("<html><u>Этапы технологичеcкого процесса:</u></html>");
-        jLabel1.setBorder(null);
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(10, 6, 530, 30);
+        lblTitle.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
+        lblTitle.setText("<html><u>Этапы технологичеcкого процесса:</u></html>");
+        getContentPane().add(lblTitle);
+        lblTitle.setBounds(10, 6, 530, 30);
 
         jScrollBar1.setMaximum(215);
         jScrollBar1.setPreferredSize(new java.awt.Dimension(20, 304));
@@ -839,14 +844,12 @@ public class HVV_Admin_MainFrame extends javax.swing.JFrame {
 
         lblTitleExecutor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitleExecutor.setText("E");
-        lblTitleExecutor.setBorder(null);
         lblTitleExecutor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblTitleExecutor);
         lblTitleExecutor.setBounds(30, 920, 30, 40);
 
         lblTitlePoller.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitlePoller.setText("P");
-        lblTitlePoller.setBorder(null);
         lblTitlePoller.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblTitlePoller);
         lblTitlePoller.setBounds(90, 920, 30, 20);
@@ -942,7 +945,6 @@ public class HVV_Admin_MainFrame extends javax.swing.JFrame {
 
         lblTitleHv.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitleHv.setText("HV");
-        lblTitleHv.setBorder(null);
         lblTitleHv.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblTitleHv);
         lblTitleHv.setBounds(90, 940, 30, 20);
@@ -971,28 +973,30 @@ public class HVV_Admin_MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pnlPanelMouseWheelMoved
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        theApp.GetCommE2A().stop();
-        
-        /* ADMIN -> EXECUTOR */
-        theApp.GetCommA2E().stop( true);
-        
-        /* ADMIN -> POLLER */
-        theApp.GetCommA2P().stop( true);
-        
-        /* ADMIN -> HV */
-        theApp.GetCommA2H().stop( true);
-        
-        /* Pendings watcher*/
-        theApp.GetPendings().PendingsWatcherStop();
-        
-        m_ledsRefreshThread.lightLedsStop();
-        
-        theApp.DropStateKeeper();
-        
-        this.dispose();
-        System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        if( HVV_Admin.MessageBoxAskYesNo( "Вы уверены что хотите выйти из программы?", "HVV_ADMIN") == JOptionPane.YES_OPTION) {
+            theApp.GetCommE2A().stop();
+
+            /* ADMIN -> EXECUTOR */
+            theApp.GetCommA2E().stop( true);
+
+            /* ADMIN -> POLLER */
+            theApp.GetCommA2P().stop( true);
+
+            /* ADMIN -> HV */
+            theApp.GetCommA2H().stop( true);
+
+            /* Pendings watcher*/
+            theApp.GetPendings().PendingsWatcherStop();
+
+            m_ledsRefreshThread.lightLedsStop();
+
+            theApp.DropStateKeeper();
+
+            this.dispose();
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnExitActionPerformed
 
     private void jScrollBar1AdjustmentValueChanged(java.awt.event.AdjustmentEvent evt) {//GEN-FIRST:event_jScrollBar1AdjustmentValueChanged
         if( m_pPanel != null)
@@ -1207,8 +1211,34 @@ public class HVV_Admin_MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnTogFatalActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        if( HVV_Admin.MessageBoxAskYesNo( "Вы уверены что хотите выйти из программы?", "HVV_ADMIN") == JOptionPane.YES_OPTION) {
+            theApp.GetCommE2A().stop();
+        
+            /* ADMIN -> EXECUTOR */
+            theApp.GetCommA2E().stop( true);
+
+            /* ADMIN -> POLLER */
+            theApp.GetCommA2P().stop( true);
+
+            /* ADMIN -> HV */
+            theApp.GetCommA2H().stop( true);
+
+            /* Pendings watcher*/
+            theApp.GetPendings().PendingsWatcherStop();
+
+            m_ledsRefreshThread.lightLedsStop();
+
+            theApp.DropStateKeeper();
+
+            this.dispose();
+            System.exit(0);
+        }
+    }//GEN-LAST:event_formWindowClosing
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
     private javax.swing.ButtonGroup btnGroupLogLevel;
     private javax.swing.JButton btnMaxAuto;
     private javax.swing.JButton btnMaxManual;
@@ -1218,9 +1248,8 @@ public class HVV_Admin_MainFrame extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnTogInfo;
     private javax.swing.JToggleButton btnTogTrace;
     private javax.swing.JToggleButton btnTogWarn;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     public javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTitleExecutor;
     private javax.swing.JLabel lblTitleHv;
     private javax.swing.JLabel lblTitlePoller;
