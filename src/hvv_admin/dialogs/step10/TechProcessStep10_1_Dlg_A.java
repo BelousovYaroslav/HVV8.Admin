@@ -818,9 +818,9 @@ public class TechProcessStep10_1_Dlg_A extends javax.swing.JDialog {
                         else
                             nTraillingPower -= ( nTraillingPower % 5);
                         m_lstProgram.add( new GettersActivationProgramStep(  5, nTraillingPower));
-                    } while( nTraillingPower > 25);
+                    } while( nTraillingPower > 20);
                     //m_lstProgram.add( new GettersActivationProgramStep(  5, 25));
-                    m_lstProgram.add( new GettersActivationProgramStep(  5, 20));    
+                    //m_lstProgram.add( new GettersActivationProgramStep(  5, 20));    
                 }
                 m_lstProgram.add( new GettersActivationProgramStep(  3, 15));
                 m_lstProgram.add( new GettersActivationProgramStep(  3, 10));
@@ -905,10 +905,9 @@ public class TechProcessStep10_1_Dlg_A extends javax.swing.JDialog {
                 if( theApp.GetSettings().GetDebugShortenProgItems() == false) {
                     m_lstProgram.add( new GettersActivationProgramStep(  5, 20));
                     m_lstProgram.add( new GettersActivationProgramStep(  5, 25));
-                    m_lstProgram.add( new GettersActivationProgramStep(  5, 30));
                 }
                 m_pnlSteps.edtDuration.setText( "5");
-                m_pnlSteps.edtPower.setText( "35");
+                m_pnlSteps.edtPower.setText( "30");
             break;
                 
             case 22:

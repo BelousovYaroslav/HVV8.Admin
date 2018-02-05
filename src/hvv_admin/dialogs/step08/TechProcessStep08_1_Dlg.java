@@ -598,6 +598,7 @@ public class TechProcessStep08_1_Dlg extends javax.swing.JDialog {
     public void LoadProgram() {
         m_lstProgram.clear();
         switch( m_nProgramType) {
+            //GETTER 1  INDUCTOR 1
             case 11:
                 m_lstProgram.add(new GettersActivationProgramStep(  3, 10));
                 m_lstProgram.add(new GettersActivationProgramStep(  3, 15));
@@ -614,6 +615,7 @@ public class TechProcessStep08_1_Dlg extends javax.swing.JDialog {
                 }
             break;
                 
+            //GETTER 1   INDUCTOR 2
             case 12:
                 m_lstProgram.add(new GettersActivationProgramStep( 2,  2));
                 m_lstProgram.add(new GettersActivationProgramStep( 2,  4));
@@ -634,19 +636,21 @@ public class TechProcessStep08_1_Dlg extends javax.swing.JDialog {
                     m_lstProgram.add(new GettersActivationProgramStep( 2,  2));
                 }
             break;
-                
+            
+            //GETTER 2   INDUCTOR 1
             case 21:
                 m_lstProgram.add(new GettersActivationProgramStep(  3, 10));
                 m_lstProgram.add(new GettersActivationProgramStep(  3, 15));
                 if( theApp.GetSettings().GetDebugShortenProgItems() == false) {
                     m_lstProgram.add(new GettersActivationProgramStep(  5, 20));
-                    m_lstProgram.add(new GettersActivationProgramStep( 10, 25));
+                    m_lstProgram.add(new GettersActivationProgramStep( 10, 22));
                     m_lstProgram.add(new GettersActivationProgramStep(  5, 20));
                     m_lstProgram.add(new GettersActivationProgramStep(  3, 15));
                     m_lstProgram.add(new GettersActivationProgramStep(  3, 10));
                 }
             break;
-                
+            
+            //GETTER 2   INDUCTOR 2
             case 22:
                 m_lstProgram.add(new GettersActivationProgramStep( 2,  2));
                 m_lstProgram.add(new GettersActivationProgramStep( 2,  4));
