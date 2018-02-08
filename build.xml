@@ -44,6 +44,10 @@
         </manifest>
     </target>
     
+    <target name="-post-jar">
+        <delete file="MANIFEST.MF"/>
+    </target>
+    
     <!--
 
     There exist several targets which are by default empty and which can be 
