@@ -717,7 +717,7 @@ public class HVV_Admin_MainFrame extends javax.swing.JFrame {
         
         theApp = app;
         
-        setTitle( "Административный модуль, 2018.02.05 15:30  (С) ФЛАВТ, 2018.");
+        setTitle( "Административный модуль, 2018.02.12 11:00  (С) ФЛАВТ, 2018.");
         
         m_pPanel = new TechProcessPanel5( app);
         m_pPanel.setVisible( true);
@@ -1229,7 +1229,9 @@ public class HVV_Admin_MainFrame extends javax.swing.JFrame {
 
             m_ledsRefreshThread.lightLedsStop();
 
-            theApp.DropStateKeeper();
+            //ВОТ ТУТ ОТЛИЧИЕ! ПРИ ЗАКРЫТИИ КРЕСТОМ НЕ НАДО БРОСАТЬ STATEKEEPER
+            //А ВООБЩЕ НАДО НА ДИАЛОГЕ ВОПРОСА ВЫШЕ СДЕЛАТЬ CHECK-BOX OPTION "DROP?"
+            //theApp.DropStateKeeper();
 
             this.dispose();
             System.exit(0);
