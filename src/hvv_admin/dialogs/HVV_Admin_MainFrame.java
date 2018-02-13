@@ -11,9 +11,11 @@ import hvv_admin.HVV_Admin;
 import hvv_admin.comm.executor.to.StartProgramExecutor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.ToolTipManager;
+import javax.swing.UIManager;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
@@ -717,7 +719,7 @@ public class HVV_Admin_MainFrame extends javax.swing.JFrame {
         
         theApp = app;
         
-        setTitle( "Административный модуль, 2018.02.12 11:00  (С) ФЛАВТ, 2018.");
+        setTitle( "Административный модуль, 2018.02.13 13:00  (С) ФЛАВТ, 2018.");
         
         m_pPanel = new TechProcessPanel5( app);
         m_pPanel.setVisible( true);
@@ -974,7 +976,16 @@ public class HVV_Admin_MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlPanelMouseWheelMoved
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        if( HVV_Admin.MessageBoxAskYesNo( "Вы уверены что хотите выйти из программы?", "HVV_ADMIN") == JOptionPane.YES_OPTION) {
+        UIManager.put("OptionPane.noButtonText", "Нет");
+        UIManager.put("OptionPane.okButtonText", "Согласен");
+        UIManager.put("OptionPane.yesButtonText", "Да");
+        
+        JCheckBox checkbox = new JCheckBox("Сохранить файл состояния");
+        checkbox.setSelected( true);
+        String message = "Вы уверены что хотите выйти из программы?";
+        Object[] params = {message, checkbox};
+        int n = JOptionPane.showConfirmDialog( this, params, "HVV_ADMIN", JOptionPane.YES_NO_OPTION);        
+        if( n == JOptionPane.YES_OPTION) {
             theApp.GetCommE2A().stop();
 
             /* ADMIN -> EXECUTOR */
@@ -991,8 +1002,10 @@ public class HVV_Admin_MainFrame extends javax.swing.JFrame {
 
             m_ledsRefreshThread.lightLedsStop();
 
-            theApp.DropStateKeeper();
-
+            if( !checkbox.isSelected()) {
+                theApp.DropStateKeeper();
+            }
+            
             this.dispose();
             System.exit(0);
         }
@@ -1212,7 +1225,17 @@ public class HVV_Admin_MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTogFatalActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        if( HVV_Admin.MessageBoxAskYesNo( "Вы уверены что хотите выйти из программы?", "HVV_ADMIN") == JOptionPane.YES_OPTION) {
+        
+        UIManager.put("OptionPane.noButtonText", "Нет");
+        UIManager.put("OptionPane.okButtonText", "Согласен");
+        UIManager.put("OptionPane.yesButtonText", "Да");
+        
+        JCheckBox checkbox = new JCheckBox("Сохранить файл состояния");
+        checkbox.setSelected( true);
+        String message = "Вы уверены что хотите выйти из программы?";
+        Object[] params = {message, checkbox};
+        int n = JOptionPane.showConfirmDialog( this, params, "HVV_ADMIN", JOptionPane.YES_NO_OPTION);        
+        if( n == JOptionPane.YES_OPTION) {
             theApp.GetCommE2A().stop();
         
             /* ADMIN -> EXECUTOR */
@@ -1229,10 +1252,10 @@ public class HVV_Admin_MainFrame extends javax.swing.JFrame {
 
             m_ledsRefreshThread.lightLedsStop();
 
-            //ВОТ ТУТ ОТЛИЧИЕ! ПРИ ЗАКРЫТИИ КРЕСТОМ НЕ НАДО БРОСАТЬ STATEKEEPER
-            //А ВООБЩЕ НАДО НА ДИАЛОГЕ ВОПРОСА ВЫШЕ СДЕЛАТЬ CHECK-BOX OPTION "DROP?"
-            //theApp.DropStateKeeper();
-
+            if( !checkbox.isSelected()) {
+                theApp.DropStateKeeper();
+            }
+            
             this.dispose();
             System.exit(0);
         }
