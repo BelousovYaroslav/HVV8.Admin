@@ -1,16 +1,12 @@
 package hvv_admin.dialogs.step05;
 
 import hvv_admin.HVV_Admin;
-import hvv_admin.comm.executor.to.StartProgramExecutor;
-import hvv_admin.steps.info.TechProcessStepInfo;
-import java.awt.Color;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
-import static java.util.concurrent.TimeUnit.SECONDS;
 import org.apache.log4j.Logger;
 
 /*
@@ -83,11 +79,27 @@ public class TechProcessStep05_2_DlgSet extends javax.swing.JDialog {
     }
     /**
      * Creates new form TechProcessStep2_1_Dlg
+     * @param app
+     * @param parent
+     * @param modal
+     * @param clndr
      */
     public TechProcessStep05_2_DlgSet( HVV_Admin app, java.awt.Frame parent, boolean modal, GregorianCalendar clndr) {
         super( parent, modal);
         theApp = app;
         initComponents();
+        
+        btnUpDay.setIcon( theApp.GetResources().getIconUp());
+        btnUpMonth.setIcon( theApp.GetResources().getIconUp());
+        btnUpYear.setIcon( theApp.GetResources().getIconUp());
+        btnUpHours.setIcon( theApp.GetResources().getIconUp());
+        btnUpMinutes.setIcon( theApp.GetResources().getIconUp());
+        
+        btnDownDay.setIcon( theApp.GetResources().getIconDown());
+        btnDownMonth.setIcon( theApp.GetResources().getIconDown());
+        btnDownYear.setIcon( theApp.GetResources().getIconDown());
+        btnDownHours.setIcon( theApp.GetResources().getIconDown());
+        btnDownMinutes.setIcon( theApp.GetResources().getIconDown());
         
         m_gdtmDate = clndr;
         
@@ -112,6 +124,11 @@ public class TechProcessStep05_2_DlgSet extends javax.swing.JDialog {
         btnGrGet7 = new javax.swing.ButtonGroup();
         btnGrGet8 = new javax.swing.ButtonGroup();
         lblIOpenGetterTitle = new javax.swing.JLabel();
+        btnUpDay = new javax.swing.JButton();
+        btnUpMonth = new javax.swing.JButton();
+        btnUpYear = new javax.swing.JButton();
+        btnUpHours = new javax.swing.JButton();
+        btnUpMinutes = new javax.swing.JButton();
         lblGetterOpenDow = new javax.swing.JLabel();
         lblGetterOpenDay = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -121,13 +138,17 @@ public class TechProcessStep05_2_DlgSet extends javax.swing.JDialog {
         lblGetterOpenHour = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         lblGetterOpenMinutes = new javax.swing.JLabel();
+        btnDownDay = new javax.swing.JButton();
+        btnDownMonth = new javax.swing.JButton();
+        btnDownYear = new javax.swing.JButton();
+        btnDownHours = new javax.swing.JButton();
+        btnDownMinutes = new javax.swing.JButton();
         btnSet = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("5.2 Термообезгаживание");
-        setMaximumSize(new java.awt.Dimension(350, 180));
-        setMinimumSize(new java.awt.Dimension(350, 180));
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
+        setPreferredSize(new java.awt.Dimension(350, 180));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -135,6 +156,51 @@ public class TechProcessStep05_2_DlgSet extends javax.swing.JDialog {
         lblIOpenGetterTitle.setToolTipText("");
         getContentPane().add(lblIOpenGetterTitle);
         lblIOpenGetterTitle.setBounds(10, 0, 330, 40);
+
+        btnUpDay.setIcon(new javax.swing.ImageIcon("/home/yaroslav/HVV_HOME/res/images/up.gif")); // NOI18N
+        btnUpDay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpDayActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnUpDay);
+        btnUpDay.setBounds(50, 45, 40, 20);
+
+        btnUpMonth.setIcon(new javax.swing.ImageIcon("/home/yaroslav/HVV_HOME/res/images/up.gif")); // NOI18N
+        btnUpMonth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpMonthActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnUpMonth);
+        btnUpMonth.setBounds(100, 45, 50, 20);
+
+        btnUpYear.setIcon(new javax.swing.ImageIcon("/home/yaroslav/HVV_HOME/res/images/up.gif")); // NOI18N
+        btnUpYear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpYearActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnUpYear);
+        btnUpYear.setBounds(160, 45, 80, 20);
+
+        btnUpHours.setIcon(new javax.swing.ImageIcon("/home/yaroslav/HVV_HOME/res/images/up.gif")); // NOI18N
+        btnUpHours.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpHoursActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnUpHours);
+        btnUpHours.setBounds(250, 45, 40, 20);
+
+        btnUpMinutes.setIcon(new javax.swing.ImageIcon("/home/yaroslav/HVV_HOME/res/images/up.gif")); // NOI18N
+        btnUpMinutes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpMinutesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnUpMinutes);
+        btnUpMinutes.setBounds(300, 45, 40, 20);
 
         lblGetterOpenDow.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
         lblGetterOpenDow.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -147,7 +213,7 @@ public class TechProcessStep05_2_DlgSet extends javax.swing.JDialog {
             }
         });
         getContentPane().add(lblGetterOpenDow);
-        lblGetterOpenDow.setBounds(10, 50, 40, 30);
+        lblGetterOpenDow.setBounds(10, 70, 40, 30);
 
         lblGetterOpenDay.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
         lblGetterOpenDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -160,7 +226,7 @@ public class TechProcessStep05_2_DlgSet extends javax.swing.JDialog {
             }
         });
         getContentPane().add(lblGetterOpenDay);
-        lblGetterOpenDay.setBounds(50, 50, 40, 30);
+        lblGetterOpenDay.setBounds(50, 70, 40, 30);
 
         jLabel4.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -168,7 +234,7 @@ public class TechProcessStep05_2_DlgSet extends javax.swing.JDialog {
         jLabel4.setToolTipText("");
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 230, 230)));
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(90, 50, 10, 30);
+        jLabel4.setBounds(90, 70, 10, 30);
 
         lblGetterOpenMonth.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
         lblGetterOpenMonth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -181,7 +247,7 @@ public class TechProcessStep05_2_DlgSet extends javax.swing.JDialog {
             }
         });
         getContentPane().add(lblGetterOpenMonth);
-        lblGetterOpenMonth.setBounds(100, 50, 50, 30);
+        lblGetterOpenMonth.setBounds(100, 70, 50, 30);
 
         jLabel7.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -189,7 +255,7 @@ public class TechProcessStep05_2_DlgSet extends javax.swing.JDialog {
         jLabel7.setToolTipText("");
         jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 230, 230)));
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(150, 50, 10, 30);
+        jLabel7.setBounds(150, 70, 10, 30);
 
         lblGetterOpenYear.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
         lblGetterOpenYear.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -202,7 +268,7 @@ public class TechProcessStep05_2_DlgSet extends javax.swing.JDialog {
             }
         });
         getContentPane().add(lblGetterOpenYear);
-        lblGetterOpenYear.setBounds(160, 50, 80, 30);
+        lblGetterOpenYear.setBounds(160, 70, 80, 30);
 
         lblGetterOpenHour.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
         lblGetterOpenHour.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -215,7 +281,7 @@ public class TechProcessStep05_2_DlgSet extends javax.swing.JDialog {
             }
         });
         getContentPane().add(lblGetterOpenHour);
-        lblGetterOpenHour.setBounds(250, 50, 40, 30);
+        lblGetterOpenHour.setBounds(250, 70, 40, 30);
 
         jLabel10.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -223,7 +289,7 @@ public class TechProcessStep05_2_DlgSet extends javax.swing.JDialog {
         jLabel10.setToolTipText("");
         jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 230, 230)));
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(290, 50, 10, 30);
+        jLabel10.setBounds(290, 70, 10, 30);
 
         lblGetterOpenMinutes.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
         lblGetterOpenMinutes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -236,7 +302,52 @@ public class TechProcessStep05_2_DlgSet extends javax.swing.JDialog {
             }
         });
         getContentPane().add(lblGetterOpenMinutes);
-        lblGetterOpenMinutes.setBounds(300, 50, 40, 30);
+        lblGetterOpenMinutes.setBounds(300, 70, 40, 30);
+
+        btnDownDay.setIcon(new javax.swing.ImageIcon("/home/yaroslav/HVV_HOME/res/images/down.gif")); // NOI18N
+        btnDownDay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDownDayActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDownDay);
+        btnDownDay.setBounds(50, 105, 40, 20);
+
+        btnDownMonth.setIcon(new javax.swing.ImageIcon("/home/yaroslav/HVV_HOME/res/images/down.gif")); // NOI18N
+        btnDownMonth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDownMonthActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDownMonth);
+        btnDownMonth.setBounds(100, 105, 50, 20);
+
+        btnDownYear.setIcon(new javax.swing.ImageIcon("/home/yaroslav/HVV_HOME/res/images/down.gif")); // NOI18N
+        btnDownYear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDownYearActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDownYear);
+        btnDownYear.setBounds(160, 105, 80, 20);
+
+        btnDownHours.setIcon(new javax.swing.ImageIcon("/home/yaroslav/HVV_HOME/res/images/down.gif")); // NOI18N
+        btnDownHours.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDownHoursActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDownHours);
+        btnDownHours.setBounds(250, 105, 40, 20);
+
+        btnDownMinutes.setIcon(new javax.swing.ImageIcon("/home/yaroslav/HVV_HOME/res/images/down.gif")); // NOI18N
+        btnDownMinutes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDownMinutesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDownMinutes);
+        btnDownMinutes.setBounds(300, 105, 40, 20);
 
         btnSet.setText("Задать");
         btnSet.addActionListener(new java.awt.event.ActionListener() {
@@ -245,7 +356,7 @@ public class TechProcessStep05_2_DlgSet extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnSet);
-        btnSet.setBounds(10, 90, 330, 40);
+        btnSet.setBounds(10, 130, 330, 40);
 
         getAccessibleContext().setAccessibleName("Дата время запуска программы открытия геттера");
 
@@ -280,6 +391,46 @@ public class TechProcessStep05_2_DlgSet extends javax.swing.JDialog {
     private void lblGetterOpenMinutesMouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_lblGetterOpenMinutesMouseWheelMoved
        m_gdtmDate.add( Calendar.MINUTE, -1 * evt.getWheelRotation());
     }//GEN-LAST:event_lblGetterOpenMinutesMouseWheelMoved
+
+    private void btnUpDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpDayActionPerformed
+        m_gdtmDate.add( Calendar.DAY_OF_MONTH, 1);
+    }//GEN-LAST:event_btnUpDayActionPerformed
+
+    private void btnUpMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpMonthActionPerformed
+        m_gdtmDate.add( Calendar.MONTH, 1);
+    }//GEN-LAST:event_btnUpMonthActionPerformed
+
+    private void btnUpYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpYearActionPerformed
+        m_gdtmDate.add( Calendar.YEAR, 1);
+    }//GEN-LAST:event_btnUpYearActionPerformed
+
+    private void btnUpHoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpHoursActionPerformed
+        m_gdtmDate.add( Calendar.HOUR, 1);
+    }//GEN-LAST:event_btnUpHoursActionPerformed
+
+    private void btnUpMinutesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpMinutesActionPerformed
+        m_gdtmDate.add( Calendar.MINUTE, 1);
+    }//GEN-LAST:event_btnUpMinutesActionPerformed
+
+    private void btnDownDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownDayActionPerformed
+        m_gdtmDate.add( Calendar.DAY_OF_MONTH, -1);
+    }//GEN-LAST:event_btnDownDayActionPerformed
+
+    private void btnDownMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownMonthActionPerformed
+        m_gdtmDate.add( Calendar.MONTH, -1);
+    }//GEN-LAST:event_btnDownMonthActionPerformed
+
+    private void btnDownYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownYearActionPerformed
+        m_gdtmDate.add( Calendar.YEAR, -1);
+    }//GEN-LAST:event_btnDownYearActionPerformed
+
+    private void btnDownHoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownHoursActionPerformed
+        m_gdtmDate.add( Calendar.HOUR, -1);
+    }//GEN-LAST:event_btnDownHoursActionPerformed
+
+    private void btnDownMinutesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownMinutesActionPerformed
+        m_gdtmDate.add( Calendar.MINUTE, -1);
+    }//GEN-LAST:event_btnDownMinutesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -453,6 +604,11 @@ public class TechProcessStep05_2_DlgSet extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDownDay;
+    private javax.swing.JButton btnDownHours;
+    private javax.swing.JButton btnDownMinutes;
+    private javax.swing.JButton btnDownMonth;
+    private javax.swing.JButton btnDownYear;
     private javax.swing.ButtonGroup btnGrGet1;
     private javax.swing.ButtonGroup btnGrGet2;
     private javax.swing.ButtonGroup btnGrGet3;
@@ -462,6 +618,11 @@ public class TechProcessStep05_2_DlgSet extends javax.swing.JDialog {
     private javax.swing.ButtonGroup btnGrGet7;
     private javax.swing.ButtonGroup btnGrGet8;
     private javax.swing.JButton btnSet;
+    private javax.swing.JButton btnUpDay;
+    private javax.swing.JButton btnUpHours;
+    private javax.swing.JButton btnUpMinutes;
+    private javax.swing.JButton btnUpMonth;
+    private javax.swing.JButton btnUpYear;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
